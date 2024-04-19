@@ -19,6 +19,7 @@ var rootCmd = &cobra.Command{
 		score := 0
 
 		for i, question := range questions {
+			// Make the Question more readable
 			fmt.Printf(color.YellowString("Question %d: %s\n"), i+1, question.Question)
 
 			fmt.Println("Choices:")
@@ -30,6 +31,7 @@ var rootCmd = &cobra.Command{
 			fmt.Print("Your answer (enter the number): ")
 			fmt.Scanln(&userAnswer)
 
+			// Prase input from user, and see if its an acceptable answer
 			userChoice, err := strconv.Atoi(userAnswer)
 			if err != nil || userChoice < 1 || userChoice > len(question.Answers) {
 				fmt.Println("Invalid choice!")
@@ -45,7 +47,8 @@ var rootCmd = &cobra.Command{
 			}
 		}
 
-		fmt.Printf("Total score: %d/%d\n", score, len(questions))
+		//More color for readability
+		fmt.Printf(color.YellowString("Total score: %d/%d\n"), score, len(questions))
 	},
 }
 
